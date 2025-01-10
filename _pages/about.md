@@ -49,7 +49,7 @@ My research interest includes deep learning and computer vision, now I am workin
 
 # 📖 Educations
 - *2023.09 - now*, Electronic Information, Institute of Advanced Technology, University of Science and Technology of China (USTC).
-- *2019.09 - 2023.06*, Industrial Engineering, Pittsburgh Institute, Sichuan University (SUC).
+- *2019.09 - 2023.06*, Industrial Engineering, Pittsburgh Institute, Sichuan University (SCU).
   
 <!--
 # 💬 Invited Talks
