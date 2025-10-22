@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Weiszfeld Algorithm | Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">Weiszfeld Algorithm</h1>
             
                 <div class="post-meta">
                     
@@ -205,14 +205,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 16, 2025&nbsp;&nbsp;17:48:10</a>
+                        Date: <a href="#">October 22, 2025&nbsp;&nbsp;14:55:30</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Hello-World/">Hello World</a>
+                                <a href="/categories/Algorithm/">Algorithm</a>
                             
                         </span>
                     
@@ -221,19 +221,20 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在社交平台上先后看到两个题，有一定关系，于是在这里做一个总结，大概题意如下：</p>
+<ol>
+<li>给定一个整数数组，找到一个数，使得该数到数组中的每个数的距离之和最小</li>
+<li>在二维平面上给定n个点的坐标，找到一个点，使得该点到这n个点的距离之和最小</li>
+</ol>
+<p>事实上第一个问题比较容易解决，数组排序后的中位数即为答案。第二个问题是一个经典的选址问题，下面考虑两种不同的距离：</p>
+<h3 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h3><p>与一维情况类似，最终点的横纵坐标是所有点的横纵坐标的中位数</p>
+<h3 id="欧氏距离"><a href="#欧氏距离" class="headerlink" title="欧氏距离"></a>欧氏距离</h3><p>采用weiszfeld算法进行迭代即可，公式如下，</p>
+<p>$y_{i+1} &#x3D; (\sum\limits_{j&#x3D;1}^{m}\frac{x_j}{||x_j - y_i||})&#x2F;(\sum\limits_{j&#x3D;1}^{m}\frac{1}{||x_j - y_i||})$</p>
+<p>根据迭代的次数的增加，数据会逐渐的收敛，最后可以计算出最优的候选点，作为最后的位置。</p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/472643771">https://www.zhihu.com/question/472643771</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhihu.geoscene.cn/article/392">https://zhihu.geoscene.cn/article/392</a></li>
+</ul>
 
         </div>
 
@@ -252,7 +253,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Hello-World/"># Hello World</a>
+                        <a href="/tags/%E7%AE%97%E6%B3%95-weiszfeld-%E9%80%89%E5%9D%80%E9%97%AE%E9%A2%98-%E5%87%A0%E4%BD%95%E5%B9%B3%E5%9D%87%E6%95%B0-%E8%BF%AD%E4%BB%A3/"># 算法, weiszfeld, 选址问题, 几何平均数, 迭代</a>
                     
                         
                 </span>
@@ -265,8 +266,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2025/10/22/weiszfeld%20algorithm/">Weiszfeld Algorithm</a>
             
+            <a class="next" rel="next" href="/2025/01/16/hello-world/">Hello World</a>
             
         </section>
 
