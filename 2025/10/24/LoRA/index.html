@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Carlos">
+
+
+
+
+
+<title>LoRA | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Cynicarlos&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Cynicarlos&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">LoRA</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Carlos</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 24, 2025&nbsp;&nbsp;11:47:53</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Deep-Learning/">Deep Learning</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>记录常见pytorch版的LoRA实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoRALinear</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_features, out_features, r</span>):</span><br><span class="line">        <span class="built_in">super</span>(LoRALinear, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.in_features = in_features  <span class="comment"># 对应 d</span></span><br><span class="line">        <span class="variable language_">self</span>.out_features = out_features  <span class="comment"># 对应 k</span></span><br><span class="line">        <span class="variable language_">self</span>.r = r  <span class="comment"># 低秩值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 原始权重矩阵，冻结</span></span><br><span class="line">        <span class="variable language_">self</span>.weight = nn.Parameter(torch.randn(in_features, out_features)) <span class="comment">#(d,k)</span></span><br><span class="line">        <span class="variable language_">self</span>.weight.requires_grad = <span class="literal">False</span>  <span class="comment"># 冻结</span></span><br><span class="line">        <span class="comment"># 偏置项，可选</span></span><br><span class="line">        <span class="variable language_">self</span>.bias = nn.Parameter(torch.zeros(out_features))</span><br><span class="line">        <span class="variable language_">self</span>.bias.requires_grad = <span class="literal">False</span>  <span class="comment"># 冻结</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># LoRA 部分的参数，初始化 A 从均值为 0 的正态分布中采样，B 为全零</span></span><br><span class="line">        <span class="variable language_">self</span>.B = nn.Parameter(torch.empty(out_features, r))  <span class="comment"># 形状为 (d, r)</span></span><br><span class="line">        <span class="variable language_">self</span>.A = nn.Parameter(torch.zeros(r, in_features))  <span class="comment"># 形状为 (r, k)</span></span><br><span class="line">        nn.init.normal_(<span class="variable language_">self</span>.A, mean=<span class="number">0.0</span>, std=<span class="number">0.02</span>)  <span class="comment"># 初始化 A</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># 原始部分</span></span><br><span class="line">        original_output = torch.nn.functional.linear(x, <span class="variable language_">self</span>.weight, <span class="variable language_">self</span>.bias)</span><br><span class="line">        <span class="comment"># LoRA 增量部分</span></span><br><span class="line">        delta_W = torch.matmul(<span class="variable language_">self</span>.B, <span class="variable language_">self</span>.A)  <span class="comment"># 形状为 (d,k)</span></span><br><span class="line">        lora_output = torch.nn.functional.linear(x, delta_W)</span><br><span class="line">        <span class="comment"># 总输出</span></span><br><span class="line">        <span class="keyword">return</span> original_output + lora_output</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoRAAttention</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, dim, rank</span>):</span><br><span class="line">        <span class="built_in">super</span>(LoRAAttention, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.dim = dim  <span class="comment"># 对应 d_model</span></span><br><span class="line">        <span class="variable language_">self</span>.rank = rank <span class="comment"># 低秩值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 原始的 QKV 权重，冻结</span></span><br><span class="line">        <span class="variable language_">self</span>.original_q_W = nn.Linear(dim, dim)</span><br><span class="line">        <span class="variable language_">self</span>.original_k_W = nn.Linear(dim, dim)</span><br><span class="line">        <span class="variable language_">self</span>.original_v_W = nn.Linear(dim, dim)</span><br><span class="line">        <span class="variable language_">self</span>.original_o_W = nn.Linear(dim, dim)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="variable language_">self</span>.original_q_W.parameters():</span><br><span class="line">            p.requires_grad = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="variable language_">self</span>.original_k_W.parameters():</span><br><span class="line">            p.requires_grad = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="variable language_">self</span>.original_v_W.parameters():</span><br><span class="line">            p.requires_grad = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.q_B = nn.Parameter(torch.zeros(dim, rank))</span><br><span class="line">        <span class="variable language_">self</span>.q_A = nn.Parameter(torch.empty(rank, dim))</span><br><span class="line">        nn.init.normal_(<span class="variable language_">self</span>.q_A, mean=<span class="number">0.0</span>, std=<span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.k_B = nn.Parameter(torch.zeros(dim, rank))</span><br><span class="line">        <span class="variable language_">self</span>.k_A = nn.Parameter(torch.empty(rank, dim))</span><br><span class="line">        nn.init.normal_(<span class="variable language_">self</span>.k_A, mean=<span class="number">0.0</span>, std=<span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.v_B = nn.Parameter(torch.zeros(dim, rank))</span><br><span class="line">        <span class="variable language_">self</span>.v_A = nn.Parameter(torch.empty(rank, dim))</span><br><span class="line">        nn.init.normal_(<span class="variable language_">self</span>.v_A, mean=<span class="number">0.0</span>, std=<span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, q, k, v</span>):</span><br><span class="line">        <span class="comment">#(b,l,d)</span></span><br><span class="line">        <span class="comment">#计算原始值</span></span><br><span class="line">        Q = <span class="variable language_">self</span>.original_q_W(q)</span><br><span class="line">        K = <span class="variable language_">self</span>.original_k_W(k)</span><br><span class="line">        V = <span class="variable language_">self</span>.original_v_W(v)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#计算增量部分</span></span><br><span class="line">        delta_q = torch.matmul(q, <span class="variable language_">self</span>.q_B) <span class="comment">#(b,l,r)</span></span><br><span class="line">        delta_q = torch.matmul(delta_q, <span class="variable language_">self</span>.q_A) <span class="comment">#(b,l,d)</span></span><br><span class="line"></span><br><span class="line">        delta_k = torch.matmul(k, <span class="variable language_">self</span>.k_B) <span class="comment">#(b,l,r)</span></span><br><span class="line">        delta_k = torch.matmul(delta_k, <span class="variable language_">self</span>.k_A) <span class="comment">#(b,l,d)</span></span><br><span class="line"></span><br><span class="line">        delta_v = torch.matmul(v, <span class="variable language_">self</span>.v_B) <span class="comment">#(b,l,r)</span></span><br><span class="line">        delta_v = torch.matmul(delta_v, <span class="variable language_">self</span>.v_A) <span class="comment">#(b,l,d)</span></span><br><span class="line"></span><br><span class="line">        Q = Q + delta_q <span class="comment">#(b,l,d)</span></span><br><span class="line">        K = K + delta_k</span><br><span class="line">        V = V + delta_v</span><br><span class="line"></span><br><span class="line">        attn = torch.matmul(Q, K.transpose(-<span class="number">2</span>, -<span class="number">1</span>)) / (<span class="variable language_">self</span>.embed_dim ** <span class="number">0.5</span>) <span class="comment">#(b,l,l)</span></span><br><span class="line">        attn = torch.nn.functional.softmax(attn, dim=-<span class="number">1</span>)</span><br><span class="line">        out = torch.matmul(attn, V) <span class="comment">#(b,l,d)</span></span><br><span class="line">        out = <span class="variable language_">self</span>.o_W(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">count_params</span>(<span class="params">module: torch.nn.Module</span>):</span><br><span class="line">    trainable = <span class="number">0</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> module.parameters():</span><br><span class="line">        total += p.numel()</span><br><span class="line">        <span class="keyword">if</span> p.requires_grad:</span><br><span class="line">            trainable += p.numel()</span><br><span class="line">    <span class="keyword">return</span> trainable, total</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    b, l, d = <span class="number">1</span>, <span class="number">512</span>, <span class="number">768</span></span><br><span class="line">    r = <span class="number">8</span></span><br><span class="line">    lora = LoRALinear(in_features=d, out_features=d, r = r).to(device=<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line">    trainable, total = count_params(lora)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;trainable : <span class="subst">&#123;trainable:,&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="comment"># d*r + r*k = 768*8+8*768=6144+6144=12288</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;total     : <span class="subst">&#123;total:,&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="comment">#(d*k + k) + d*r + r*k = (768*768+768)+768*8+8*768=590592+6144+6144=602880</span></span><br><span class="line"></span><br><span class="line">    lora = LoRAAttention(d, r).to(device=<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line">    trainable, total = count_params(lora)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;trainable : <span class="subst">&#123;trainable:,&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="comment">#3*2*r*d + d*d+d = 6rd + d^2+d = 36864+590592=6227456</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;total     : <span class="subst">&#123;total:,&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="comment">#4*(d*d+d) + 3*2*r*d = 4(d^2+d) + 6rd = 2362368+36864=2399232</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/472643771">https://www.zhihu.com/question/472643771</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhihu.geoscene.cn/article/392">https://zhihu.geoscene.cn/article/392</a></li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"># 深度学习</a>
+                    
+                        <a href="/tags/%E5%BE%AE%E8%B0%83/"># 微调</a>
+                    
+                        <a href="/tags/LoRA/"># LoRA</a>
+                    
+                        <a href="/tags/%E5%85%AB%E8%82%A1/"># 八股</a>
+                    
+                        <a href="/tags/%E6%89%8B%E6%92%95/"># 手撕</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2025/10/22/weiszfeld%20algorithm/">Weiszfeld Algorithm</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Carlos | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
