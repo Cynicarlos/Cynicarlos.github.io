@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 // ---- parse CLI args ----
 const args = process.argv.slice(2);
@@ -13,29 +12,12 @@ const tags = getArg('tags');
 const category = getArg('category');
 
 if (!fileArg) {
-  console.log('Usage: node scripts/publish.js <file.md> [--tags "t1,t2"] [--category "cat"]');
-  process.exit(1);
-}
-
-// ---- load .env ----
-const envPath = path.join(__dirname, '..', '.env');
-if (fs.existsSync(envPath)) {
-  fs.readFileSync(envPath, 'utf-8')
-    .split('\n')
-    .filter(l => l && !l.startsWith('#'))
-    .forEach(l => {
-      const [k, ...v] = l.split('=');
-      process.env[k.trim()] = v.join('=').trim();
-    });
-}
-
-const token = process.env.GITHUB_TOKEN;
-if (!token) {
-  console.error('Missing GITHUB_TOKEN in .env file');
+  console.log('Usage: node publish.js <file.md> [--tags "t1,t2"] [--category "cat"]');
   process.exit(1);
 }
 
 // ---- read & process the post ----
+const rootDir = __dirname;
 const srcPath = path.resolve(fileArg);
 if (!fs.existsSync(srcPath)) {
   console.error(`File not found: ${srcPath}`);
@@ -62,30 +44,33 @@ tags:${tagList || ' []'}
 }
 
 // ---- write to source/_posts ----
-const postsDir = path.join(__dirname, '..', 'source', '_posts');
+const postsDir = path.join(rootDir, 'source', '_posts');
 const destName = path.basename(srcPath);
 const destPath = path.join(postsDir, destName);
 fs.writeFileSync(destPath, content, 'utf-8');
 console.log(`  Written: source/_posts/${destName}`);
 
-// ---- inject token into deploy config & run hexo ----
-const configPath = path.join(__dirname, '..', '_config.yml');
-const originalConfig = fs.readFileSync(configPath, 'utf-8');
-const patchedConfig = originalConfig.replace(
-  /token:\s*GITHUB_TOKEN_PLACEHOLDER/,
-  `token: ${token}`
-);
-fs.writeFileSync(configPath, patchedConfig, 'utf-8');
+// ---- generate & deploy ----
+async function run() {
+  const Hexo = require('hexo');
+  const hexo = new Hexo(rootDir, { silent: false });
 
-try {
-  console.log('  Generating...');
-  execSync('npx hexo generate', { cwd: path.join(__dirname, '..'), stdio: 'inherit' });
+  try {
+    await hexo.init();
 
-  console.log('  Deploying...');
-  execSync('npx hexo deploy', { cwd: path.join(__dirname, '..'), stdio: 'inherit' });
+    console.log('  Generating...');
+    await hexo.call('generate', {});
 
-  console.log(`\nDone! ${title} published.`);
-} finally {
-  // always restore placeholder
-  fs.writeFileSync(configPath, originalConfig, 'utf-8');
+    console.log('  Deploying...');
+    await hexo.call('deploy', {});
+
+    console.log(`\nDone! "${title}" published.`);
+  } finally {
+    await hexo.exit();
+  }
 }
+
+run().catch(err => {
+  console.error(err);
+  process.exit(1);
+});

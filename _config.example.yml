@@ -104,4 +104,4 @@ deploy:
   type: git
   repo: https://github.com/Cynicarlos/Cynicarlos.github.io.git
   branch: master
-  token: GITHUB_TOKEN_PLACEHOLDER
+  token: YOUR_GITHUB_TOKEN

@@ -37,7 +37,16 @@ if [ ! -f .env ]; then
   echo "GITHUB_TOKEN=$token" > .env
   echo "  .env created."
 else
-  echo "  .env already exists, skipping."
+  echo "  .env found, skipping."
+  token=$(grep GITHUB_TOKEN .env | cut -d= -f2)
+fi
+
+# 4. Generate _config.yml from template with token
+if [ ! -f _config.yml ]; then
+  sed "s/YOUR_GITHUB_TOKEN/$token/" _config.example.yml > _config.yml
+  echo "  _config.yml created from template."
+else
+  echo "  _config.yml already exists, skipping."
 fi
 
 echo ""

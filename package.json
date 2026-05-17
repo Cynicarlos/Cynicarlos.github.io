@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "publish": "node scripts/publish.js",
+    "publish": "node publish.js",
     "setup": "bash setup.sh"
   },
   "hexo": {
