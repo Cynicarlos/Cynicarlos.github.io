@@ -1,7 +1,8 @@
 ---
 title: test post
-date: 2026-05-17
+date: 2026-05-17 16:10:00
 category: Tech
+mathjax: true
 tags:
     - 测试
     - 自动化

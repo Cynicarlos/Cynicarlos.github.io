@@ -1,5 +1,6 @@
 ---
 title: Weiszfeld Algorithm
+date: 2025-10-22 00:00:00
 tags: 
     - 算法
     - weiszfeld
@@ -7,6 +8,7 @@ tags:
     - 几何平均数
     - 迭代
 category: Algorithm
+mathjax: true
 ---
 
 ## 背景

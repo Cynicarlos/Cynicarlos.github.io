@@ -10,9 +10,10 @@ const getArg = (name) => {
 };
 const tags = getArg('tags');
 const category = getArg('category');
+const mathjax = args.includes('--mathjax');
 
 if (!fileArg) {
-  console.log('Usage: node publish.js <file.md> [--tags "t1,t2"] [--category "cat"]');
+  console.log('Usage: node publish.js <file.md> [--tags "t1,t2"] [--category "cat"] [--mathjax]');
   process.exit(1);
 }
 
@@ -29,13 +30,16 @@ const title = path.basename(srcPath, '.md').replace(/[-_]/g, ' ');
 
 // auto-generate frontmatter if missing
 if (!content.trimStart().startsWith('---')) {
-  const date = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  const date = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
   const tagList = tags ? `\n    - ${tags.split(',').map(t => t.trim()).join('\n    - ')}` : '';
   const categoryLine = category ? `\ncategory: ${category}` : '';
+  const mathjaxLine = mathjax ? '\nmathjax: true' : '';
 
   const frontmatter = `---
 title: ${title}
-date: ${date}${categoryLine}
+date: ${date}${categoryLine}${mathjaxLine}
 tags:${tagList || ' []'}
 ---\n\n`;
 
