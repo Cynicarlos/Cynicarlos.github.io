@@ -1,10 +1,21 @@
 #!/bin/bash
 # Blog setup script — run on a new computer to get everything ready.
-# Usage: bash setup.sh
+#
+# First-time setup:
+#   git clone -b source https://github.com/Cynicarlos/Cynicarlos.github.io.git blog
+#   cd blog
+#   bash setup.sh
 
 set -e
 
 echo "=== Blog Setup ==="
+
+# 0. Ensure we're on the source branch
+current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+if [ "$current_branch" != "source" ]; then
+  echo "  Switching to source branch..."
+  git checkout source 2>/dev/null || git checkout -b source origin/source 2>/dev/null || true
+fi
 
 # 1. Check Node.js
 if ! command -v node &>/dev/null; then
