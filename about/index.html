@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Carlos">
+
+
+
+
+
+<title>about | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Cynicarlos&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Cynicarlos&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title">about</h2>
+        
+        <section class="post-content">
+            <p>I am currently a Ph.D. student at Harbin Institute of Technology, Shenzhen (HITSZ), advised by Professor <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=mEjhz-IAAAAJ&hl=zh-CN">Zhuotao Tian</a>. I received my M.E. degree from the University of Science and Technology of China (USTC), where I was supervised by Professor <a target="_blank" rel="noopener" href="https://scholar.google.ae/citations?user=xrqsoesAAAAJ&hl=zh-CN">Junwei Han</a>, IEEE Fellow, and my B.E. degree from Sichuan University.</p>
+<p>My research interests lie in <strong>multimodal large models</strong> and <strong>intelligent agents (AI Agents)</strong>, with a focus on building systems that can perceive, reason, and act across diverse modalities. I am also broadly interested in deep learning, computer vision, and AIGC. I hope to contribute meaningful work to these rapidly evolving fields in the future.</p>
+<h1 id="🔥-News"><a href="#🔥-News" class="headerlink" title="🔥 News"></a>🔥 News</h1><ul>
+<li><em>2025.07</em> &nbsp;🎉🎉 A collaborative paper has been accepted by Pattern Recognition.</li>
+<li><em>2025.07</em> &nbsp;🎉🎉 A paper has been accepted by TCSVT.</li>
+</ul>
+<h1 id="📝-Publications"><a href="#📝-Publications" class="headerlink" title="📝 Publications"></a>📝 Publications</h1><ul>
+<li><strong>Hierarchical Mixing Architecture for Low-light RAW Image Enhancement.</strong><br><strong>Xianmin Chen</strong>, Peiliang Huang, et. al. (arXiv), 2025. [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2510.15497">paper</a> | <a target="_blank" rel="noopener" href="https://github.com/Cynicarlos/HiMA">code</a>]</li>
+<li><strong>Retinex-RAWMamba: Bridging Demosaicing and Denoising for Low-Light RAW Image Enhancement.</strong><br><strong>Xianmin Chen</strong>, Longfei Han, et. al.<br>IEEE Transactions on Circuits and Systems for Video Technology (TCSVT, <font color=#03fc7b></font>), 2025. [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2409.07040">paper</a> | <a target="_blank" rel="noopener" href="https://github.com/Cynicarlos/RetinexRawMamba">code</a>]</li>
+<li><strong>DecoupleNet: Domain-Specific Task Decoupling Network for Low-Light Image Enhancement.</strong><br>Peiliang Huang*, <strong>Xianmin Chen*</strong> et. al.<br>Pattern Recognition (PR, <font color=#03fc7b></font>), 2025. [<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0031320325008647">paper</a> | <a target="_blank" rel="noopener" href="https://github.com/drafly/decouplenet">code</a>]</li>
+</ul>
+<h1 id="🔎-Reviewer"><a href="#🔎-Reviewer" class="headerlink" title="🔎 Reviewer"></a>🔎 Reviewer</h1><p><font color=#34c3eb>Conference Reviewer</font></p>
+<ul>
+<li>AAAI (2027)</li>
+<li>ECCV (2026 Workshop LoViF)</li>
+</ul>
+<p><font color=#34c3eb>Journal Reviewer</font></p>
+<ul>
+<li>IEEE Transactions on Circuits and Systems for Video Technology (TCSVT)</li>
+<li>Pattern Recognition (PR)</li>
+</ul>
+<h1 id="📖-Educations"><a href="#📖-Educations" class="headerlink" title="📖 Educations"></a>📖 Educations</h1><ul>
+<li><em>2026.09 - now</em>, Computer Science and Technology, HITSZ.</li>
+<li><em>2023.09 - 2026.06</em>, Electronic Information, Institute of Advanced Technology, University of Science and Technology of China (USTC).</li>
+<li><em>2019.09 - 2023.06</em>, Industrial Engineering, Pittsburgh Institute, Sichuan University (SCU).</li>
+</ul>
+<h1 id="🎖-Honors-and-Awards"><a href="#🎖-Honors-and-Awards" class="headerlink" title="🎖 Honors and Awards"></a>🎖 Honors and Awards</h1><ul>
+<li>Outstanding Master’s Thesis, Institute of Advanced Technology, USTC, 2026</li>
+<li>First-Class Academic Scholarship, USTC, 2025</li>
+</ul>
+
+        </section>
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Carlos | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
